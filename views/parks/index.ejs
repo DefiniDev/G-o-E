@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../">
+    <title>Parks</title>
+  </head>
+  <body>
+    <h1>All Parks</h1>
+    <a href="/parks/new">Add Park</a>
+    <ul>
+      <% for (let park of parks) { %>
+      <li>
+        <a href="/parks/<%= park._id %> "><%= park.title %></a>
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
