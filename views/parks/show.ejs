@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Show</title>
-  </head>
-  <body>
-    <h1><%= park.title %></h1>
-    <h2><%= park.location %></h2>
-    <br />
-    <a href="/parks/<%= park._id %>/edit">Edit</a>
-    <br />
-    <br />
-    <form action="/parks/<%= park._id %>?_method=DELETE" method="POST">
-      <button>Delete</button>
-    </form>
-    <br />
-    <footer>
-      <a href="/parks">All Parks</a>
-    </footer>
-  </body>
-</html>
+<% layout("layouts/boilerplate")%>
+<div id="show-body">
+  <%- include("../partials/navbar")%>
+  <h1><%= park.title %></h1>
+  <h2><%= park.location %></h2>
+  <br />
+  <img src="<%= park.image %> " alt="" />
+  <a href="/parks/<%= park._id %>/edit">Edit</a>
+  <br />
+  <br />
+  <form action="/parks/<%= park._id %>?_method=DELETE" method="POST">
+    <button>Delete</button>
+  </form>
+  <br />
+  <a href="/parks">All Parks</a>
+</div>

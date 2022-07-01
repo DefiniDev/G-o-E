@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+# images
+/public/img
+
 # Runtime data
 pids
 *.pid

@@ -3,9 +3,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
-const Park = require("./models/park");
+const ejsMate = require("ejs-mate");
 const { urlencoded } = require("express");
 const methodOverride = require("method-override");
+const Park = require("./models/park");
 
 // Connect to DB
 async function main() {
@@ -21,12 +22,15 @@ main().catch(err => {
 });
 
 // Middleware
+app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
+// app.use((req, res, next) => {});
 
-// Route - show all products
+// Routes
 app.get("/", async (req, res) => {
   res.render("home");
 });
@@ -72,37 +76,3 @@ app.delete("/parks/:id", async (req, res) => {
 app.listen(3000, () => {
   console.log("APP IS LISTENING ON PORT 3000!");
 });
-
-/*
-// Async / await fetch api demo
-//const res = await fetch("https://swapi.dev/api/people/1/");
-const getDadJoke = async () => {
-  const res = await fetch("https://icanhazdadjoke.com/", {
-    headers: { Accept: "application/json" },
-  });
-  const data = await res.json();
-  console.log(data.joke);
-};
-getDadJoke();
-
-// Function - create query string from object
-const demoQS = { p: "tree", color: "brown" };
-function toQueryString(paramsObject) {
-  return Object.keys(paramsObject)
-    .map(
-      key =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(paramsObject[key])}`
-    )
-    .join("&");
-}
-console.log(toQueryString(demoQS));
-*/
-
-/*
-// Make park db demo
-app.get("/makepark", async (req, res) => {
-  const park = new Park({ title: "My Backyard", description: "Cheap walking" });
-  await park.save();
-  res.send(park);
-});
-*/
