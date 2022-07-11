@@ -1,20 +1,27 @@
 <% layout("layouts/boilerplate")%>
-<div id="index-body">
-  <%- include("../partials/navbar")%>
-  <div id="home-vignettes">
-    <div id="home-vignettes-left"></div>
-    <div id="home-vignettes-right"></div>
-    <div id="home-vignettes-top"></div>
-    <div id="home-vignettes-bottom"></div>
+<div id="index-bg"></div>
+<%- include("../partials/navbar")%>
+<!-- Vignette -->
+<div id="vignette">
+  <div id="vignette-left"></div>
+  <div id="vignette-right"></div>
+  <div id="vignette-top"></div>
+  <div id="vignette-bottom"></div>
+</div>
+<div id="index-container">
+  <div id="index-titlebar-container">
+    <h1>All Parks</h1>
+    <a href="/parks/new">Add Park</a>
   </div>
-  <h1>All Parks</h1>
-  <a href="/parks/new">Add Park</a>
-  <ul>
+  <ul id="index-ulist">
     <% for (let park of parks) { %>
-    <li>
+    <li class="index-li">
+      <a href="/parks/<%= park._id %> "
+        ><img src="<%= park.image %>" alt=""
+      /></a>
       <a href="/parks/<%= park._id %> "><%= park.title %></a>
     </li>
     <% } %>
   </ul>
-  <%- include("../partials/footer")%>
 </div>
+<%- include("../partials/footer")%>

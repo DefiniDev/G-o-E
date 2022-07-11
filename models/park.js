@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const ParkSchema = new Schema({
   title: String,
-  image: String,
-  fees: String,
-  description: String,
   location: String,
+  fees: String,
+  image: String,
+  description: String,
 });
 
 module.exports = mongoose.model("Park", ParkSchema);

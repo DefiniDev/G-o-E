@@ -1,7 +1,16 @@
 <% layout("layouts/boilerplate")%>
-<div id="new-body">
-  <%- include("../partials/navbar")%>
-  <form action="/parks" method="POST">
+<div id="index-bg"></div>
+<!-- Vignette -->
+<div id="vignette">
+  <div id="vignette-left"></div>
+  <div id="vignette-right"></div>
+  <div id="vignette-top"></div>
+  <div id="vignette-bottom"></div>
+</div>
+<%- include("../partials/navbar")%>
+<div id="new-form-container">
+  <h1>New Park</h1>
+  <form id="new-form" action="/parks" method="POST">
     <div>
       <label for="title">Title</label>
       <input type="text" id="title" name="park[title]" />
@@ -10,7 +19,38 @@
       <label for="location">Location</label>
       <input type="text" id="location" name="park[location]" />
     </div>
+    <div>
+      <label for="location">Image</label>
+      <input type="text" id="image" name="park[image]" />
+    </div>
+    <div id="new-form-radios">
+      <p>Fee(s)</p>
+      <input type="radio" id="none" name="park[fees]" value="none" checked />
+      <label for="none">None</label>
+      <input type="radio" id="entry" name="park[fees]" value="entry" />
+      <label for="entry">Entry</label>
+      <input type="radio" id="parking" name="park[fees]" value="parking" />
+      <label for="parking">Parking</label>
+      <input
+        type="radio"
+        id="entry+parking"
+        name="park[fees]"
+        value="entry+parking"
+      />
+      <label for="entry+parking">Entry & Parking</label>
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea
+        type="text"
+        id="description"
+        cols="36"
+        rows="3"
+        name="park[description]"
+      ></textarea>
+    </div>
     <button>Add Park</button>
   </form>
   <a href="/parks">All Parks</a>
 </div>
+<%- include("../partials/footer")%>

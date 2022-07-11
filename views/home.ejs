@@ -9,74 +9,71 @@
     <title>Gardens of England</title>
   </head>
   <body>
-    <div id="home-body">
-      <%- include("partials/navbar")%>
+    <div id="home-bg"></div>
+    <%- include("partials/navbar")%>
 
-      <!-- Vignette -->
-      <div id="home-vignettes">
-        <div id="home-vignettes-left"></div>
-        <div id="home-vignettes-right"></div>
-        <div id="home-vignettes-top"></div>
-        <div id="home-vignettes-bottom"></div>
+    <!-- Vignette -->
+    <div id="vignette">
+      <div id="vignette-left"></div>
+      <div id="vignette-right"></div>
+      <div id="vignette-top"></div>
+      <div id="vignette-bottom"></div>
+    </div>
+
+    <div id="home-logogroup" class="disable-select">
+      <div id="home-logogroup-borders">
+        <div
+          id="home-logogroup-borders-border1"
+          class="home-logogroup-borders"
+        ></div>
+        <div
+          id="home-logogroup-borders-border2"
+          class="home-logogroup-borders"
+        ></div>
+        <div
+          id="home-logogroup-borders-border3"
+          class="home-logogroup-borders"
+        ></div>
+        <div
+          id="home-logogroup-borders-border4"
+          class="home-logogroup-borders"
+        ></div>
       </div>
 
-      <div id="home-logogroup" class="disable-select">
-        <div id="home-logogroup-borders">
-          <div
-            id="home-logogroup-borders-border1"
-            class="home-logogroup-borders"
-          ></div>
-          <div
-            id="home-logogroup-borders-border2"
-            class="home-logogroup-borders"
-          ></div>
-          <div
-            id="home-logogroup-borders-border3"
-            class="home-logogroup-borders"
-          ></div>
-          <div
-            id="home-logogroup-borders-border4"
-            class="home-logogroup-borders"
-          ></div>
-        </div>
-
-        <div id="home-logogroup-initials">
-          <h1 class="home-logogroup-initials">G O</h1>
-          <h1
-            class="home-logogroup-initials"
-            style="transform: translateX(3px)"
-          >
-            E
-          </h1>
-        </div>
-
-        <div id="home-logogroup-words">
-          <h1 class="home-logogroup-words">ardens</h1>
-          <h1 class="home-logogroup-words">f</h1>
-          <h1 class="home-logogroup-words">ngland</h1>
-        </div>
+      <div id="home-logogroup-initials">
+        <h1 class="home-logogroup-initials">G O</h1>
+        <h1 class="home-logogroup-initials" style="transform: translateX(3px)">
+          E
+        </h1>
       </div>
 
-      <!-- <div id="home-datetime">
+      <div id="home-logogroup-words">
+        <h1 class="home-logogroup-words">ardens</h1>
+        <h1 class="home-logogroup-words">f</h1>
+        <h1 class="home-logogroup-words">ngland</h1>
+      </div>
+    </div>
+
+    <!-- <div id="home-datetime">
         <div id="home-datetime-date"></div>
         <div id="home-datetime-time"></div>
       </div> -->
 
-      <div id="home-buttongroup-container">
-        <div id="home-buttongroup">
-          <p>
-            Welcome to <span style="font-weight: 600">Gardens of England</span>.
-          </p>
-          <p>
-            Search, rate, share and comment on walking and hiking locations from
-            all over the UK.
-          </p>
-          <a id="home-buttongroup-enter" href="/parks">View Parks</a>
-        </div>
+    <div id="home-buttongroup-container">
+      <div id="home-buttongroup">
+        <p>
+          Welcome to <span style="font-weight: 600">Gardens of England</span>.
+        </p>
+        <p>
+          Search, rate, share and comment on walking and hiking locations from
+          all over the UK.
+        </p>
+        <a id="home-buttongroup-enter" href="/parks">View Parks</a>
       </div>
-
-      <!-- <%- include("partials/footer")%> -->
     </div>
+
+    <!-- <%- include("partials/footer")%> -->
+
     <!-- Script load -->
     <script defer src="/js/home.js"></script>
   </body>

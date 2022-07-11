@@ -45,7 +45,10 @@ app.get("/parks/new", (req, res) => {
 });
 
 app.post("/parks", async (req, res) => {
-  const park = new Park(req.body.park);
+  const prePark = req.body.park;
+  if (prePark.hasOwnProperty("image")) prePark.image = "/img/no-image.webp";
+  console.log(prePark);
+  const park = new Park(prePark);
   await park.save();
   res.redirect(`/parks/${park._id}`);
 });
