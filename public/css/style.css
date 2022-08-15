@@ -102,6 +102,34 @@ nav a {
   margin: 0 15px;
 }
 
+/* Date/Time */
+#datetime {
+  height: 56px;
+  position: fixed;
+  color: rgb(255, 247, 228);
+  background: rgba(28, 28, 28, 0.7);
+  border: solid 1px rgba(255, 247, 228, 0.8);
+  border-top: none;
+  border-left: none;
+  font-family: "Gentium Plus", serif;
+  font-size: 22px;
+  font-weight: 400;
+  top: 0px;
+  border-radius: 0 0 15px 0;
+  filter: blur(0.5px);
+  padding: 1px 0 10px 10px;
+  z-index: 2;
+}
+
+#datetime-date {
+  width: 219px;
+  margin-right: 10px;
+}
+
+#datetime-time {
+  margin-right: 10px;
+}
+
 /* Home page */
 #home-bg {
   position: absolute;
@@ -111,28 +139,6 @@ nav a {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
-
-#home-datetime {
-  position: absolute;
-  text-align: right;
-  color: rgb(255, 247, 228);
-  background: rgba(28, 28, 28, 0.5);
-  font-family: "Gentium Plus", serif;
-  font-size: 22px;
-  font-weight: 600;
-  top: 8px;
-  right: 8px;
-  border-radius: 15px;
-}
-
-#home-datetime-date {
-  width: 230px;
-  margin-right: 10px;
-}
-
-#home-datetime-time {
-  margin-right: 10px;
 }
 
 #home-logogroup {
@@ -222,6 +228,7 @@ nav a {
   border: solid 1px rgba(255, 247, 228, 0.8);
   border-radius: 25px;
   margin: 0 auto;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.8);
 }
 
 #home-buttongroup-container #home-buttongroup p {
@@ -257,7 +264,11 @@ nav a {
 #home-buttongroup-enter:hover,
 #new-form-container a:hover,
 #index-titlebar-container a:hover,
-#new-form button:hover {
+#new-form button:hover,
+.index-li-info a:hover,
+#show-container a:hover,
+#show-card-buttons a:hover,
+#show-card-buttons button:hover {
   transform: scale(1);
   transition: transform 0.1s ease-in-out;
   box-shadow: 0 0 20px 10px rgba(255, 247, 228, 0.2);
@@ -270,7 +281,11 @@ nav a {
 #home-buttongroup-enter:active,
 #new-form-container a:active,
 #index-titlebar-container a:active,
-#new-form button:active {
+#new-form button:active,
+.index-li-info a:active,
+#show-container a:active,
+#show-card-buttons a:active,
+#show-card-buttons button:active {
   transform: scale(0.8);
   transition: transform 0.1s ease-in-out;
 }
@@ -291,13 +306,15 @@ nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: calc(100vh - 96px);
+  margin-bottom: 40px;
 }
 
 #index-titlebar-container {
   display: flex;
-  width: 580px;
+  width: 680px;
   font-family: "Gentium Plus", serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   justify-content: space-between;
   margin: 80px 0 25px 0;
@@ -316,7 +333,11 @@ nav a {
 #index-titlebar-container a,
 #index-titlebar-container a:visited,
 #new-form button,
-#new-form button:visited {
+#new-form button:visited,
+#show-card-buttons a,
+#show-card-buttons a:visited,
+#show-card-buttons button,
+#show-card-buttons button:visited {
   display: flex;
   height: 45px;
   width: 115px;
@@ -328,34 +349,44 @@ nav a {
   box-shadow: 8px 11px 8px rgba(0, 0, 0, 0.8);
   text-decoration: none;
   border-radius: 14px;
-  margin-top: 6px;
   transform: scale(0.9);
   transition: transform 0.1s ease-in-out;
+  border: solid 1px;
 }
 
 #index-ulist {
+  display: flex;
+  flex-direction: column;
   list-style: none;
-  border-radius: 15px;
   z-index: 1;
   padding: 1px 0;
-  filter: blur(0.5px);
-}
-
-.index-li {
-  width: 600px;
-  background: rgba(255, 247, 228, 0.95);
-  margin: -1px auto;
-  height: 158px;
-  border: solid 1px rgba(0, 0, 0, 0.8);
-  filter: blur(0.5px);
+  filter: blur(0.6px);
 }
 
 .index-li:nth-child(1) {
-  border-radius: 15px 15px 0 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.index-li:nth-child(1) img {
+  border-radius: 10px 0 0 0;
 }
 
 .index-li:last-child {
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 10px 10px;
+}
+
+.index-li:last-child img {
+  border-radius: 0 0 0 10px;
+}
+
+.index-li {
+  display: flex;
+  height: 158px;
+  width: 690px;
+  background: rgba(255, 247, 228, 0.95);
+  font-family: "Gentium Plus", serif;
+  border: solid 1px rgb(30, 30, 30);
+  margin: -1px auto;
 }
 
 .index-li a img {
@@ -366,17 +397,46 @@ nav a {
   border-right: solid 1px rgb(118, 118, 118);
 }
 
-.index-li a:nth-child(2),
-.index-li a:nth-child(2):visited,
-.index-li a:nth-child(2):active {
-  color: rgb(41, 41, 41);
-  font-size: 24px;
-  font-family: "Gentium Plus", serif;
+.index-li-info {
+  display: flex;
+  flex-direction: column;
   font-weight: 600;
-  position: absolute;
-  top: 10px;
-  margin-left: 15px;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.index-li-info h1,
+.index-li-info h2 {
+  color: rgb(30, 30, 30);
+  font-size: 22px;
+}
+
+.index-li-info h1 {
+  text-decoration: underline;
+  margin: 10px 0 0 0;
+}
+
+.index-li-info h2 {
+  font-size: 16px;
+  font-style: italic;
+  margin: 5px 0 0 0;
+  font-weight: 400;
+}
+
+.index-li-info-buttons {
+  font-size: 16px;
+  color: rgb(30, 30, 30);
+  background: rgb(255, 247, 228);
+  box-shadow: 4px 5px 3px rgba(0, 0, 0, 0.8);
   text-decoration: none;
+  border-radius: 10px;
+  transform: scale(0.97);
+  transition: transform 0.1s ease-in-out;
+  padding: 6px 9px;
+  border: solid 1px rgb(33, 33, 33);
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
 }
 
 /* New page */
@@ -385,12 +445,13 @@ nav a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 96px);
+  height: calc(100vh - 146px);
   font-family: "Gentium Plus", serif;
+  margin: 50px 0 40px 0;
 }
 
 #new-form-container h1 {
-  margin: 30px 0 30px 0;
+  margin: 30px 0 40px 0;
   font-size: 44px;
 }
 
@@ -406,7 +467,7 @@ nav a {
   box-shadow: 10px 13px 8px rgba(0, 0, 0, 0.8);
   border: solid 1px rgb(33, 33, 33);
   border-radius: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   filter: blur(0.5px);
   font-size: 20px;
   padding-top: 20px;
@@ -441,7 +502,7 @@ nav a {
 }
 
 #new-form-container a,
-#new-form-container a:visited {
+#show-container a {
   position: relative;
   width: 180px;
   height: 65px;
@@ -467,8 +528,82 @@ nav a {
   font-size: 26px;
   font-weight: 600;
   margin: 8px 0 20px 0;
-  border: solid 1px;
   box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Show page */
+#show-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gentium Plus", serif;
+  min-height: calc(100vh - 56px);
+}
+
+#show-card {
+  width: 550px;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 247, 228, 0.95);
+  box-shadow: 10px 13px 8px rgba(0, 0, 0, 0.8);
+  border: solid 1px rgb(33, 33, 33);
+  border-radius: 15px;
+  filter: blur(0.6px);
+  z-index: 1;
+  margin: 50px 0 24px 0;
+  word-wrap: break-word;
+}
+
+#show-card img {
+  height: 350px;
+  border-bottom: solid 1px rgb(33, 33, 33);
+  border-radius: 10px 10px 0 0;
+}
+
+#show-card-info {
+  min-height: 248px;
+  padding: 0 10px;
+}
+
+#show-card-info h1 {
+  text-decoration: underline;
+  margin: 5px 0 5px 0;
+  font-size: 26px;
+}
+
+#show-card-info p {
+  font-size: 18px;
+}
+
+#show-card-info h2 {
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+#show-card-buttons {
+  width: 100%;
+  height: 95px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  border-top: solid 1px rgb(33, 33, 33);
+}
+
+#show-card-buttons a,
+#show-card-buttons button {
+  width: 150px;
+  height: 50px;
+  color: rgb(30, 30, 30);
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 10px 13px 8px rgba(0, 0, 0, 0.8);
+  border: solid 1px rgb(33, 33, 33);
+  border-radius: 15px;
 }
 
 /* Footer section */
@@ -481,7 +616,6 @@ nav a {
   height: 56px;
   background: rgba(28, 28, 28, 0.7);
   border-top: solid 1px rgba(255, 247, 228, 0.9);
-  margin-top: 40px;
 }
 
 footer {
@@ -506,6 +640,10 @@ svg {
 }
 
 @media screen and (max-width: 768px) {
+  #datetime {
+    display: none;
+  }
+
   #home-logogroup {
     display: none;
   }

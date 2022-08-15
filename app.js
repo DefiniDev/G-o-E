@@ -11,12 +11,12 @@ const Park = require("./models/park");
 // Connect to DB
 async function main() {
   await mongoose
-    .connect("mongodb://localhost:27017/gardens-of-england")
+    .connect("mongodb://127.0.0.1:27017/gardens-of-england")
     .then(() => {
       console.log("Database connected");
     });
 }
-main().catch(err => {
+main().catch((err) => {
   console.log("ERROR!");
   console.log(err);
 });
@@ -46,8 +46,7 @@ app.get("/parks/new", (req, res) => {
 
 app.post("/parks", async (req, res) => {
   const prePark = req.body.park;
-  if (prePark.hasOwnProperty("image")) prePark.image = "/img/no-image.webp";
-  console.log(prePark);
+  if (prePark.image === "") prePark.image = "/img/no-image.png";
   const park = new Park(prePark);
   await park.save();
   res.redirect(`/parks/${park._id}`);

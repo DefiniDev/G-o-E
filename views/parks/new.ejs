@@ -1,5 +1,6 @@
 <% layout("layouts/boilerplate")%>
 <div id="index-bg"></div>
+
 <!-- Vignette -->
 <div id="vignette">
   <div id="vignette-left"></div>
@@ -7,21 +8,31 @@
   <div id="vignette-top"></div>
   <div id="vignette-bottom"></div>
 </div>
+
+<!-- Navbar -->
 <%- include("../partials/navbar")%>
+
+<!-- Date/Time -->
+<%- include("../partials/datetime")%>
+
+<!-- 7 Ranscombe Farm Cottages, Cuxton,
+Rochester ME2 1LA -->
+
+<!-- Main -->
 <div id="new-form-container">
   <h1>New Park</h1>
   <form id="new-form" action="/parks" method="POST">
     <div>
       <label for="title">Title</label>
-      <input type="text" id="title" name="park[title]" />
+      <input type="text" id="title" name="park[title]" maxlength="60" />
     </div>
     <div>
       <label for="location">Location</label>
-      <input type="text" id="location" name="park[location]" />
+      <input type="text" id="location" name="park[location]" maxlength="60" />
     </div>
     <div>
       <label for="location">Image</label>
-      <input type="text" id="image" name="park[image]" />
+      <input type="text" id="image" name="park[image]" maxlength="400" />
     </div>
     <div id="new-form-radios">
       <p>Fee(s)</p>
@@ -47,10 +58,14 @@
         cols="36"
         rows="3"
         name="park[description]"
+        maxlength="48"
       ></textarea>
     </div>
     <button>Add Park</button>
   </form>
   <a href="/parks">All Parks</a>
 </div>
+
+<!-- Footer -->
 <%- include("../partials/footer")%>
+<script defer src="/js/script.js"></script>

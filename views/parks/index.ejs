@@ -1,6 +1,6 @@
 <% layout("layouts/boilerplate")%>
 <div id="index-bg"></div>
-<%- include("../partials/navbar")%>
+
 <!-- Vignette -->
 <div id="vignette">
   <div id="vignette-left"></div>
@@ -8,6 +8,14 @@
   <div id="vignette-top"></div>
   <div id="vignette-bottom"></div>
 </div>
+
+<!-- Navbar -->
+<%- include("../partials/navbar")%>
+
+<!-- Date/Time -->
+<%- include("../partials/datetime")%>
+
+<!-- Main -->
 <div id="index-container">
   <div id="index-titlebar-container">
     <h1>All Parks</h1>
@@ -16,12 +24,21 @@
   <ul id="index-ulist">
     <% for (let park of parks) { %>
     <li class="index-li">
-      <a href="/parks/<%= park._id %> "
-        ><img src="<%= park.image %>" alt=""
+      <a href="/parks/<%= park._id %>"
+        ><img class="index-li-img" src="<%= park.image %>" alt=""
       /></a>
-      <a href="/parks/<%= park._id %> "><%= park.title %></a>
+      <div class="index-li-info">
+        <h1 class="index-li-info-h1s"><%= park.title %></h1>
+        <h2 class="index-li-info-h2s"><%= park.location %></h2>
+        <a class="index-li-info-buttons" href="/parks/<%= park._id %>"
+          >View <%= park.title %>
+        </a>
+      </div>
     </li>
     <% } %>
   </ul>
 </div>
+
+<!-- Footer -->
 <%- include("../partials/footer")%>
+<script defer src="/js/script.js"></script>

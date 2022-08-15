@@ -1,16 +1,39 @@
 <% layout("layouts/boilerplate")%>
-<div id="show-body">
-  <%- include("../partials/navbar")%>
-  <h1><%= park.title %></h1>
-  <h2><%= park.location %></h2>
-  <br />
-  <img src="<%= park.image %> " alt="" />
-  <a href="/parks/<%= park._id %>/edit">Edit</a>
-  <br />
-  <br />
-  <form action="/parks/<%= park._id %>?_method=DELETE" method="POST">
-    <button>Delete</button>
-  </form>
-  <br />
+<div id="index-bg"></div>
+
+<!-- Vignette -->
+<div id="vignette">
+  <div id="vignette-left"></div>
+  <div id="vignette-right"></div>
+  <div id="vignette-top"></div>
+  <div id="vignette-bottom"></div>
+</div>
+
+<!-- Navbar -->
+<%- include("../partials/navbar")%>
+
+<!-- Date/Time -->
+<%- include("../partials/datetime")%>
+
+<!-- Main -->
+<div id="show-container">
+  <div id="show-card">
+    <img class="show-img" src="<%= park.image %>" alt="" />
+    <div id="show-card-info">
+      <h1><%= park.title %></h1>
+      <h2><%= park.location %></h2>
+      <p><%= park.description %></p>
+    </div>
+    <div id="show-card-buttons">
+      <a href="/parks/<%= park._id %>/edit">Edit</a>
+      <form action="/parks/<%= park._id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+      </form>
+    </div>
+  </div>
   <a href="/parks">All Parks</a>
 </div>
+
+<!-- Footer -->
+<%- include("../partials/footer")%>
+<script defer src="/js/script.js"></script>

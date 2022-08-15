@@ -5,7 +5,7 @@ const Park = require("./models/park");
 // Connect to DB
 async function main() {
   await mongoose
-    .connect("mongodb://localhost:27017/gardens-of-england")
+    .connect("mongodb://127.0.0.1:27017/gardens-of-england")
     .then(() => {
       console.log("Database connected");
     });
